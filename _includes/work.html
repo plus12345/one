@@ -1,0 +1,40 @@
+<section class="section-work">
+
+	<h3 id="work"> Work </h3>
+	{% for project in site.data.portfolio.projects %}
+		<input type="radio" name="trigger" class="trigger" id="{{ proj.folder }}" />
+	{% endfor %}
+
+	<input type="radio" name="trigger" id="return" class="return" />
+
+	<div class="work-belt">
+
+		<div class="thumb-wrap">
+			<div class="thumb-container">
+			{% for proj in site.data.portfolio.projects %}
+		
+				<div class="thumb-unit" data-folder="{{ proj.folder }}" style="background-image: url(/assets/img/work/{{ proj.folder }}/thumb.jpg);">
+					<div class="thumb-overlay">
+						<strong>{{ proj.name }}</strong>
+					</div>		
+				</div>
+			</label>
+			{% endfor %}
+			</div>
+			</div>
+
+			<div class="work-wrap">
+				<div class="work-container">
+				<label for="return">
+					<div class="work-return">{% include icons/icon-back.html %}</div>
+				</label>
+				<h4 div class="project-title"></h4>
+				<div class="project-load"></div>
+
+			
+				 	
+		</div>
+		</div>	 	
+
+	</div>
+</section>

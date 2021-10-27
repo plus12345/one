@@ -1,0 +1,142 @@
+.section-work
+	overflow-x: hidden
+/*hackey-type css as a jquery alternative for when the browser does not have jquery enabled. */
+
+.noscript
+  display: none
+
+.return
+	display: none
+
+@each $proj in $projects
+  ##{$proj}:checked ~ .work-belt .work-wrap .work-container noscript #content-#{$proj}
+    display: block	
+
+.trigger
+	display: none
+
+	&:checked ~ .work-belt
+		left: -100%
+
+		.work-wrap .work-container
+			display: block
+/*end of gross /hackey css */			
+
+
+.work-belt
+	width: 200%
+	position: relative
+	left: 0%
+	+transition(all, 800ms)
+
+	&.slided
+		+transform(translate3d(-50%, 0, 0))
+
+.thumb-wrap, .work-wrap
+	width: 50%
+	float: left
+
+	
+
+.thumb-container
+	display: block
+	max-width: 960px
+	margin: 90px auto
+	+clearfix
+
+	.thumb-unit
+		display: block
+		width: 25%
+		float: left
+		position: relative
+		padding-top: 16%
+		overflow: hidden
+		cursor: pointer
+		background:
+			position: center center
+			repeat: no-repeat
+			size: cover
+		+perspective(300)
+		@if $animation != "bonceOut"
+			overflow: hidden
+
+		@Media screen and (max-width: 760px)
+			width: 50%
+			padding-top: 26%
+
+		.thumb-overlay
+			+position(absolute)
+			background: fade-out($accent, 0.1)
+			text-align: center		
+			+display(flex)
+			+align-items(center)
+			+justify-content(space-around)
+			@extend %animationstart_#{$animation}
+			
+
+			strong
+				display: block
+				padding: 0px 20px
+				color: white
+				font:
+					weight: 300
+					size: 24px
+				text-transform: uppercase
+				line-heigh: 1.2
+
+		&:hover
+		 z-index: 2
+
+			.thumb-overlay
+				@extend  %#{$animation}
+
+.work-container
+	max-width: 600px
+
+	margin: 0px auto
+	padding: 0 15px
+	+box-sizing(border-box)
+
+	position: relative
+	display: none
+
+	.work-return
+		+position(absolute, -4px null null -60px)
+		text-transform: uppercase
+		font-weight: 600
+		+size(40px)
+		cursor: pointer
+		opacity: 0.5
+
+
+	h4
+		color: $accent
+		font-weight: 300
+		text-transform: uppercase
+		font-size: 24px
+		line-heigh: 1.2
+		margin: 0 0 20px
+
+	img
+		max-width: 100%
+		margin-bottom: 20px
+
+
+		&:hover
+			opacity: 1
+
+		path
+			fill: rgba(0,0,0,0.4)
+
+	
+
+@Media (max-width: 740px)
+	.work-container
+
+	.work-return
+		left: 0px
+
+	h4
+		margin-left: 60px
+
+			
